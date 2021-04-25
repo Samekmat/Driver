@@ -6,8 +6,14 @@ class Question(models.Model):
     training = models.ForeignKey('Training', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.content
 
 
 class Training(models.Model):
     question = models.ManyToManyField(Question)
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
