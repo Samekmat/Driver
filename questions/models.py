@@ -21,3 +21,11 @@ class Answer(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+
+
+class Advice(models.Model):
+    name = models.CharField(max_length=200)
+    multimedia = models.FileField(upload_to='questions/multimedia')
+    content = models.TextField()
+    category = models.ManyToManyField(Category)
+    training = models.ForeignKey(Training, on_delete=models.CASCADE)
