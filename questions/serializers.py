@@ -26,4 +26,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
+class AdviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Advice
+        fields = '__all__'
