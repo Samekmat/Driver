@@ -1,8 +1,17 @@
 from rest_framework import serializers
-from .models import Question
+from .models import Question, Training, Answer, Category, Advice
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Question
         fields = ('id', 'url', 'title', 'description')
+
+
+class TrainingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Training
+        fields = '__all__'
+
+
+
