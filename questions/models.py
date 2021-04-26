@@ -3,18 +3,18 @@ from django.db import models
 
 class Question(models.Model):
     content = models.CharField(max_length=200)
-    training = models.ForeignKey('Training', on_delete=models.CASCADE)
+    training = models.ForeignKey('Training', on_delete=models.CASCADE, related_name='question_training', null=True)
 
     def __str__(self):
         return self.content
 
 
 class Training(models.Model):
-    question = models.ManyToManyField(Question)
+    question = models.ManyToManyField(Question, related_name='exercise')
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
     content = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
 
@@ -29,3 +29,6 @@ class Advice(models.Model):
     content = models.TextField()
     category = models.ManyToManyField(Category)
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
