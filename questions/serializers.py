@@ -17,7 +17,7 @@ class TrainingSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = '__all__'
+        fields = ('id', 'url', 'content', 'is_correct', 'question')
 
 
 class CategorySerializer(serializers.ModelSerializer):
