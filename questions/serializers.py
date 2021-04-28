@@ -29,4 +29,4 @@ class CategorySerializer(serializers.ModelSerializer):
 class AdviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advice
-        fields = '__all__'
+        fields = ('id', 'url', 'name', 'multimedia', 'content', 'training', 'category')
