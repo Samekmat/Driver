@@ -10,6 +10,7 @@ class Question(models.Model):
 
 
 class Training(models.Model):
+    name = models.CharField(max_length=120, null=True)
     question = models.ManyToManyField(Question, related_name='exercise')
 
 
