@@ -23,7 +23,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = ('id', 'url', 'name')
 
 
 class AdviceSerializer(serializers.ModelSerializer):
