@@ -30,3 +30,16 @@ class AnswerAPIView(APIView):
 
         serializer = AnswerSerializer(answer)
         return Response(serializer.data)
+
+
+class CategoryListView(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CategoryAPIView(APIView):
+    def get(self, request, category_id):
+        category = Category.objects.get(pk=category_id)
+
+        serializer = CategorySerializer(category)
+        return Response(serializer.data)
