@@ -25,10 +25,10 @@ class Category(models.Model):
 
 class Advice(models.Model):
     name = models.CharField(max_length=200)
-    multimedia = models.FileField(upload_to='questions/multimedia')
+    multimedia = models.FileField(upload_to='questions/multimedia', null=True)
     content = models.TextField()
     category = models.ManyToManyField(Category)
-    training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    training = models.ForeignKey(Training, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
