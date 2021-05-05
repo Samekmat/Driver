@@ -73,6 +73,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Driver.wsgi.application'
 
 
+DATABASES = {
+    'default': {
+        'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Driver',
+        'USER': 'postgres',
+        'PASSWORD': 'mati2000',
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -115,13 +126,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-try:
-    from Driver.local_settings import DATABASES
-except ModuleNotFoundError:
-    print("Brak konfiguracji bazy danych w pliku local_settings.py!")
-    print("Uzupełnij dane i spróbuj ponownie!")
-    exit(0)
 
 
 REST_FRAMEWORK = {
