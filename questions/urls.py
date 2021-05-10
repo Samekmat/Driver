@@ -16,4 +16,5 @@ urlpatterns = [
     path('categories/<int:pk>/', views.CategoryAPIView.as_view()),
     path('advices/<int:pk>/', views.AdviceAPIView.as_view()),
     path('register/', views.UserCreate.as_view()),
+    path('register/form/', views.RegisterFormView.as_view()),
     ]

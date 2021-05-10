@@ -1,9 +1,13 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import FormView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets, generics
+
+from .forms import RegisterForm
 from .models import Question, Answer, Advice, Category
 from .serializers import QuestionSerializer, AnswerSerializer, AdviceSerializer, CategorySerializer, UserSerializer
 
@@ -64,3 +68,23 @@ class UserCreate(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
+
+
+class RegisterFormView(FormView):
+    def get(self, request, *args, **kwargs):
+        form = RegisterForm()
+        return render(request, 'register.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            User.objects.create_user(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
+        return render(request, 'register.html', {'form': form})
+
+
+
+
+
