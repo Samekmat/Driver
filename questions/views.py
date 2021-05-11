@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import FormView
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -15,11 +17,15 @@ from .serializers import QuestionSerializer, AnswerSerializer, AdviceSerializer,
 
 
 class QuestionListView(viewsets.ModelViewSet):
+    """ModelViewSet displaying all questions from database with link to each one"""
+
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
 
 class QuestionAPIView(APIView):
+    """APIView displaying a question with given id"""
+
     def get(self, request, question_id):
         question = Question.objects.get(pk=question_id)
 
@@ -28,11 +34,15 @@ class QuestionAPIView(APIView):
 
 
 class AnswerListView(viewsets.ModelViewSet):
+    """ModelViewSet displaying all answers from db with link to each one"""
+
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
 
 
 class AnswerAPIView(APIView):
+    """APIView displaying an answer with given id"""
+
     def get(self, request, answer_id):
         answer = Answer.objects.get(pk=answer_id)
 
@@ -41,11 +51,15 @@ class AnswerAPIView(APIView):
 
 
 class CategoryListView(viewsets.ModelViewSet):
+    """ModelViewSet displaying all categories from db with link to each one"""
+
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
 
 class CategoryAPIView(APIView):
+    """APIView displaying a category with given id"""
+
     def get(self, request, category_id):
         category = Category.objects.get(pk=category_id)
 
@@ -54,11 +68,15 @@ class CategoryAPIView(APIView):
 
 
 class AdviceListView(viewsets.ModelViewSet):
+    """ModelViewSet displaying all advices from db with link to each one"""
+
     queryset = Advice.objects.all()
     serializer_class = AdviceSerializer
 
 
 class AdviceAPIView(APIView):
+    """APIView displaying an advice with given id"""
+
     def get(self, request, advice_id):
         advice = Advice.objects.get(pk=advice_id)
 
@@ -67,12 +85,16 @@ class AdviceAPIView(APIView):
 
 
 class UserCreate(generics.CreateAPIView):
+    """CreateAPIView creates user in ApiView"""
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
 
 
 class RegisterFormView(FormView):
+    """FormView for user registration by form"""
+
     def get(self, request, *args, **kwargs):
         form = RegisterForm()
         return render(request, 'register.html', {'form': form})
@@ -88,6 +110,7 @@ class RegisterFormView(FormView):
 
 
 class LoginView(View):
+    """Standard view for user login by form"""
     def get(self, request):
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -104,6 +127,7 @@ class LoginView(View):
 
 
 class LogoutView(View):
+    """LogoutView for possibility to log out user"""
     def get(self, request):
         logout(request)
         return redirect(reverse('login-form'))
