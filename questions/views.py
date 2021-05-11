@@ -17,7 +17,7 @@ from .serializers import QuestionSerializer, AnswerSerializer, AdviceSerializer,
 
 
 class QuestionListView(viewsets.ModelViewSet):
-    """ModelViewSet displaying all questions from database with link to each one"""
+    """List of questions"""
 
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
@@ -34,7 +34,7 @@ class QuestionAPIView(APIView):
 
 
 class AnswerListView(viewsets.ModelViewSet):
-    """ModelViewSet displaying all answers from db with link to each one"""
+    """List of answers"""
 
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
@@ -51,7 +51,7 @@ class AnswerAPIView(APIView):
 
 
 class CategoryListView(viewsets.ModelViewSet):
-    """ModelViewSet displaying all categories from db with link to each one"""
+    """"List of categories"""
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -68,7 +68,7 @@ class CategoryAPIView(APIView):
 
 
 class AdviceListView(viewsets.ModelViewSet):
-    """ModelViewSet displaying all advices from db with link to each one"""
+    """List of advices"""
 
     queryset = Advice.objects.all()
     serializer_class = AdviceSerializer
