@@ -3,7 +3,7 @@ body {
     background-color: #f3f3f3;
 }
 
-#wrapper {
+#wrap {
     max-width: 960px;
     margin: 0 auto;
     background-color: #fff;
@@ -29,30 +29,30 @@ header h2 {
     color: #fff;
 }
 
-.menu {
+.mdriver {
     padding: 5px 0 5px 0;
     text-align: center;
     line-height: 32px;
     background-color: #818181;
 }
 
-ul.menu {
+ul.mdriver {
     margin-top: 15px;
 }
 
-.menu li {
+.mdriver li {
     display: inline;
     padding: 0 10px 0 10px;
     font-size: 20px;
 }
 
-.menu a {
+.mdriver a {
     text-decoration: none;
     color: #fff;
     padding: 8px;
     font-variant: small-caps;
 }
 
-.menu a:hover {
+.mdriver a:hover {
     color: #59d5d8;
 }

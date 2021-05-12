@@ -131,3 +131,9 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect(reverse('login-form'))
+
+
+class IndexView(View):
+    def get(self, request):
+
+        return render(request, 'index.html')
